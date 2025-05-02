@@ -5,12 +5,12 @@ import (
 )
 
 // CreateCenter creates the central content area
-func CreateLayout() *tview.Flex {
+func CreateLayout(mysqlIP, mysqlPort, proxyPort string) *tview.Flex {
 	menu := Menu()
 	footer := CreateFooter()
 
 	// Central content area
-	connectionContent := CreateConnectionContent()
+	connectionContent := CreateConnectionContent(mysqlIP, mysqlPort, proxyPort)
 	queriesContent := CreateQueriesContent()
 
 	center := tview.NewFlex().SetDirection(tview.FlexRow).

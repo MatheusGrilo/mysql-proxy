@@ -8,11 +8,16 @@ import (
 func main() {
 	app := tview.NewApplication()
 
-	// Cria o layout principal usando o package ui
-	layout := ui.CreateLayout()
-
-	// Configura e executa o aplicativo
-	if err := app.SetRoot(layout, true).Run(); err != nil {
-		panic(err)
+	// Exibe a tela de splash
+	proceed, mysqlIP, mysqlPort, proxyPort := ui.CreateSplash(app)
+	if proceed {
+		// Se o usuário clicar em "Proceed", executa o layout principal
+		layout := ui.CreateLayout(mysqlIP, mysqlPort, proxyPort)
+		if err := app.SetRoot(layout, true).Run(); err != nil {
+			panic(err)
+		}
+	} else {
+		// Se o usuário clicar em "Quit", encerra o programa
+		app.Stop()
 	}
 }

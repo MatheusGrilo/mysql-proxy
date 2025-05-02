@@ -3,7 +3,7 @@ module github.com/matheusgrilo/mysql-proxy
 go 1.24.2
 
 require (
-	github.com/gdamore/tcell/v2 v2.7.1 // indirect
+	github.com/gdamore/tcell/v2 v2.7.1
 	github.com/rivo/tview v0.0.0-20250501113434-0c592cd31026
 )
 
